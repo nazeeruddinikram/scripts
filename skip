@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Skip n lines in a file.
+# Usage: skip number_of_lines file
+
+if [ $# -ne 2 ]; then
+  echo 'Usage: skip number_of_lines file'; exit 1
+fi
+
+tail -n +`expr $1 + 1` "$2"

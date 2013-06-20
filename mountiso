@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Mount ISO archive as a directory
+# Usage: mountiso iso_file mount_directory
+
+if [ $# -ne 2 ]; then
+  echo "Usage: mountiso iso_file mount_directory."; exit 1
+fi
+
+ISO_FILE="$1"
+MOUNT_DIR="$2"
+
+sudo mount -o loop -t iso9660 "$ISO_FILE" "$MOUNT_DIR"

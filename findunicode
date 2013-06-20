@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Recursively finds filenames containing unicode characters.
+# Usage: findunicode directory
+
+if [ ! -d "$1" ]; then
+  echo "Usage: findunicode directory."; exit 1
+fi
+
+find "$1" -print | grep -P '[\x80-\xFF]'

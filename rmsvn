@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Recursively delete all .svn subdirectories from a directory.
+# Usage: remsvn directory
+
+if [ ! -d "$1" ]; then
+  echo "Usage: rmsvn directory."; exit 1
+fi
+
+find "$1" -name ".svn" -type d -exec rm -rf {} \;

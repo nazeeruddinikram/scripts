@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Calculate lines of code statistics.
+# Usage: loc extension directory
+
+if [ $# -ne 2 ]; then
+  echo "Usage: loc extension directory"; exit 1
+fi
+
+DIR="$2"
+EXT="*.$1"
+
+echo 'Files: '
+find "$DIR" -name "$EXT" -type f | wc -l
+echo 'Lines: '
+find "$DIR" -name "$EXT" -type f -exec cat {} \; |  wc -l
+echo 'kB: '
+expr `find "$DIR" -name "$EXT" -type f -exec cat {} \; |  wc -c` / 1024

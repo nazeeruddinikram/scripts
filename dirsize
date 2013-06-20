@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Print directory size.
+# Usage: dirsize directory
+
+if [ ! -d "$1" ]; then
+  echo "Usage: dirsize directory."; exit 1
+fi
+
+du -h "$1" | tail -n 1
