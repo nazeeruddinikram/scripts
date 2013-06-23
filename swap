@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# Swaps two files given as arguments. 
+# Usage: swap file1 file2
+
+# Verify number of arguments
+if [ $# -ne 2 ]
+then
+   echo "Usage: swap file1 file2"
+   exit 65
+fi
+
+# Verify both arguments are file
+if [ ! -f "$1" ]
+then
+   echo "Argument 1 is not a file."
+   exit 65	
+fi
+
+if [ ! -f "$2" ]
+then
+   echo "Argument 2 is not a file."
+   exit 65
+fi
+
+# Generate unique filename
+TMPFILE="$1.`date +$s%N`"
+
+mv "$1" "$TMPFILE"
+mv "$2" "$1"
+mv "$TMPFILE" "$2"
