@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Delete all temporary files with trailing tilde (including hidden).
+# Usage: rmtmp directory
+
+if [ ! -d "$1" ]; then
+  echo "Usage: rmtmp directory."; exit 1
+fi
+
+find "$1" \( -name "*~" -o -name ".*~" \) -ls -delete
